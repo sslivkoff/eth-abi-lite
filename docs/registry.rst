@@ -18,8 +18,8 @@ callables:
 
 .. testcode:: nulltype-callables
 
-    from eth_abi.exceptions import EncodingError, DecodingError
-    from eth_abi.registry import registry
+    from eth_abi_lite.exceptions import EncodingError, DecodingError
+    from eth_abi_lite.registry import registry
 
     # Define and register the coders
     NULL_ENCODING = b'\x00' * 32
@@ -39,7 +39,7 @@ callables:
     registry.register('null', encode_null, decode_null)
 
     # Try them out
-    from eth_abi import encode_single, decode_single
+    from eth_abi_lite import encode_single, decode_single
 
     assert encode_single('null', None) == NULL_ENCODING
     assert decode_single('null', NULL_ENCODING) is None
@@ -51,7 +51,7 @@ callables:
 
 .. testcleanup:: nulltype-callables
 
-    from eth_abi.registry import registry
+    from eth_abi_lite.registry import registry
     registry.unregister('null')
 
 In the above example, we define two coder callables and register them to handle
@@ -87,10 +87,10 @@ stream.  We could do that in the following way:
 
 .. testcode:: nulltype-classes
 
-    from eth_abi.decoding import BaseDecoder
-    from eth_abi.encoding import BaseEncoder
-    from eth_abi.exceptions import EncodingError, DecodingError
-    from eth_abi.registry import registry
+    from eth_abi_lite.decoding import BaseDecoder
+    from eth_abi_lite.encoding import BaseEncoder
+    from eth_abi_lite.exceptions import EncodingError, DecodingError
+    from eth_abi_lite.registry import registry
 
     # Define and register the coders
     NULL_ENCODING = b'\x00' * 32
@@ -134,7 +134,7 @@ stream.  We could do that in the following way:
     )
 
     # Try them out
-    from eth_abi import encode_single, decode_single
+    from eth_abi_lite import encode_single, decode_single
 
     assert encode_single('null2', None) == NULL_ENCODING * 2
     assert decode_single('null2', NULL_ENCODING * 2) is None
@@ -146,7 +146,7 @@ stream.  We could do that in the following way:
 
 .. testcleanup:: nulltype-classes
 
-    from eth_abi.registry import registry
+    from eth_abi_lite.registry import registry
     registry.unregister('null')
 
 There are a few differences here from our first example.  Now, we are providing

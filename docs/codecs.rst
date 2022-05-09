@@ -8,7 +8,7 @@ registrations or by unregistering existing coders (see :ref:`registry`),
 sometimes a user might wish to create their own registry entirely.  In that
 case, they can still use the usual API for encoding and decoding values (see
 :ref:`encoding` and :ref:`decoding`) with their own registry by using the
-:class:`~eth_abi.codec.ABICodec` or :class:`~eth_abi.codec.ABIEncoder` class.
+:class:`~eth_abi_lite.codec.ABICodec` or :class:`~eth_abi_lite.codec.ABIEncoder` class.
 
 Using a Custom Registry
 -----------------------
@@ -19,9 +19,9 @@ API:
 
 .. testcode:: custom-registry-nulltype
 
-    from eth_abi.codec import ABICodec
-    from eth_abi.exceptions import EncodingError, DecodingError
-    from eth_abi.registry import ABIRegistry
+    from eth_abi_lite.codec import ABICodec
+    from eth_abi_lite.exceptions import EncodingError, DecodingError
+    from eth_abi_lite.registry import ABIRegistry
 
     # Define and register the coders
     NULL_ENCODING = b'\x00' * 32
@@ -68,8 +68,8 @@ capability coupled with the use of a custom codec:
 
 .. testcode:: custom-registry-copied
 
-    from eth_abi.codec import ABICodec
-    from eth_abi.registry import registry as default_registry
+    from eth_abi_lite.codec import ABICodec
+    from eth_abi_lite.registry import registry as default_registry
 
     registry = default_registry.copy()
     registry.unregister('address')
@@ -102,8 +102,8 @@ for decoding, they can do the following:
 
 .. testcode:: custom-stream-class
 
-    from eth_abi.codec import ABIEncoder, ABIDecoder
-    from eth_abi.registry import registry
+    from eth_abi_lite.codec import ABIEncoder, ABIDecoder
+    from eth_abi_lite.registry import registry
 
     class MyStream:
         # Custom behavior...

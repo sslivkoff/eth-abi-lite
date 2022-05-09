@@ -4,7 +4,7 @@ from hypothesis import (
 )
 import pytest
 
-from eth_abi.packed import (
+from eth_abi_lite.packed import (
     is_encodable_packed,
 )
 from tests.common.strategies import (

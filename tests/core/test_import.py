@@ -1,4 +1,4 @@
 
 
 def test_import():
-    import eth_abi  # noqa: F401
+    import eth_abi_lite  # noqa: F401

@@ -2,7 +2,7 @@ from hypothesis import (
     given,
 )
 
-from eth_abi import (
+from eth_abi_lite import (
     decode_abi,
     decode_single,
     encode_abi,

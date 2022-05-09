@@ -1,18 +1,18 @@
-from eth_abi.abi import (
+from eth_abi_lite.abi import (
     decode_single,
     encode_single,
 )
-from eth_abi.decoding import (
+from eth_abi_lite.decoding import (
     BaseDecoder,
 )
-from eth_abi.encoding import (
+from eth_abi_lite.encoding import (
     BaseEncoder,
 )
-from eth_abi.exceptions import (
+from eth_abi_lite.exceptions import (
     DecodingError,
     EncodingError,
 )
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     registry,
 )
 

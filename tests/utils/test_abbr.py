@@ -1,6 +1,6 @@
 import pytest
 
-from eth_abi.utils.string import (
+from eth_abi_lite.utils.string import (
     abbr,
 )
 

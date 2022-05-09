@@ -1,6 +1,6 @@
 import pytest
 
-from eth_abi.abi import (
+from eth_abi_lite.abi import (
     decode_single,
 )
 

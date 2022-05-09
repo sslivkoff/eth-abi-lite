@@ -1,6 +1,6 @@
 import pytest
 
-from eth_abi.utils.padding import (
+from eth_abi_lite.utils.padding import (
     zpad,
 )
 

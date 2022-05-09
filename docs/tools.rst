@@ -3,7 +3,7 @@
 Tools
 =====
 
-The ``eth_abi.tools`` module provides extra resources to users of ``eth-abi``
+The ``eth_abi_lite.tools`` module provides extra resources to users of ``eth-abi``
 that are not required for typical use.  It can be installed with ``pip`` as an
 extra requirement:
 
@@ -15,13 +15,13 @@ extra requirement:
 ABI Type Strategies
 -------------------
 
-The ``tools`` module provides the :meth:`~eth_abi.tools.get_abi_strategy`
+The ``tools`` module provides the :meth:`~eth_abi_lite.tools.get_abi_strategy`
 function.  This function returns a hypothesis strategy (value generator) for any
 given ABI type specified by its canonical string representation:
 
 .. doctest::
 
-    >>> from eth_abi.tools import get_abi_strategy
+    >>> from eth_abi_lite.tools import get_abi_strategy
 
     >>> uint_st = get_abi_strategy('uint8')
     >>> uint_st

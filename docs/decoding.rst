@@ -11,7 +11,7 @@ follows:
 
 .. doctest::
 
-    >>> from eth_abi import decode_single, decode_abi
+    >>> from eth_abi_lite import decode_single, decode_abi
 
     >>> decode_single('uint256', b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0009')
     12345

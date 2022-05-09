@@ -11,7 +11,7 @@ follows:
 
 .. doctest::
 
-    >>> from eth_abi import encode_single, encode_abi
+    >>> from eth_abi_lite import encode_single, encode_abi
 
     >>> encode_single('uint256', 12345)
     b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0009'
@@ -41,7 +41,7 @@ for a given ABI type using :any:`encode_single`:
 
 .. doctest::
 
-    >>> from eth_abi import is_encodable
+    >>> from eth_abi_lite import is_encodable
 
     >>> is_encodable('int', 2)
     True
@@ -69,7 +69,7 @@ encoding.  You can encode values in this format like so:
 
 .. doctest::
 
-    >>> from eth_abi.packed import encode_single_packed, encode_abi_packed
+    >>> from eth_abi_lite.packed import encode_single_packed, encode_abi_packed
 
     >>> encode_single_packed('uint32', 12345)
     b'\x00\x0009'

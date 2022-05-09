@@ -189,7 +189,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'eth_abidoc'
+htmlhelp_basename = 'eth_abi_litedoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -209,7 +209,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'eth_abi.tex', 'Ethereum Contract Interface (ABI) Utility Documentation',
+  ('index', 'eth_abi_lite.tex', 'Ethereum Contract Interface (ABI) Utility Documentation',
    'The Ethereum Foundation', 'manual'),
 ]
 
@@ -239,7 +239,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'eth_abi', 'Ethereum Contract Interface (ABI) Utility Documentation',
+    ('index', 'eth_abi_lite', 'Ethereum Contract Interface (ABI) Utility Documentation',
      ['The Ethereum Foundation'], 1)
 ]
 

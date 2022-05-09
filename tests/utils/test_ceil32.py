@@ -1,6 +1,6 @@
 import pytest
 
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     ceil32,
 )
 

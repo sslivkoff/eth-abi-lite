@@ -13,12 +13,12 @@ from hypothesis import (
     strategies as st,
 )
 
-from eth_abi.grammar import (
+from eth_abi_lite.grammar import (
     ABIType,
     normalize,
     parse,
 )
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     BaseEquals,
     BaseRegistry,
     Lookup,
@@ -26,7 +26,7 @@ from eth_abi.registry import (
     has_arrlist,
     is_base_tuple,
 )
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     scale_places,
 )
 

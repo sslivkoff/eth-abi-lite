@@ -1,7 +1,7 @@
-from eth_abi.codec import (
+from eth_abi_lite.codec import (
     ABICodec,
 )
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     registry,
 )
 

@@ -22,17 +22,17 @@ from eth_utils import (
     to_canonical_address,
 )
 
-from eth_abi.base import (
+from eth_abi_lite.base import (
     BaseCoder,
     parse_tuple_type_str,
     parse_type_str,
 )
-from eth_abi.exceptions import (
+from eth_abi_lite.exceptions import (
     EncodingTypeError,
     IllegalValue,
     ValueOutOfBounds,
 )
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     TEN,
     abi_decimal_context,
     ceil32,
@@ -41,12 +41,12 @@ from eth_abi.utils.numeric import (
     compute_unsigned_fixed_bounds,
     compute_unsigned_integer_bounds,
 )
-from eth_abi.utils.padding import (
+from eth_abi_lite.utils.padding import (
     fpad,
     zpad,
     zpad_right,
 )
-from eth_abi.utils.string import (
+from eth_abi_lite.utils.string import (
     abbr,
 )
 

@@ -5,7 +5,7 @@ import operator
 
 import pytest
 
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     Equals,
     PredicateMapping,
 )

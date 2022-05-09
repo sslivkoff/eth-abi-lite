@@ -12,7 +12,7 @@ from hypothesis import (
 )
 import pytest
 
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     ABI_DECIMAL_PREC,
     scale_places,
 )

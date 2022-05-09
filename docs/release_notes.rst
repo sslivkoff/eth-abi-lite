@@ -40,11 +40,11 @@ eth-abi v2.1.1 (2020-02-27)
 Bugfixes
 ~~~~~~~~
 
-- If subclassing :meth:`eth_abi.decoding.ContextFramesBytesIO.seek`, the new method was not
-  being used by :meth:`~eth_abi.decoding.ContextFramesBytesIO.seek_in_frame`. Now it will be. (`#139 <https://github.com/ethereum/eth-abi/issues/139>`__)
+- If subclassing :meth:`eth_abi_lite.decoding.ContextFramesBytesIO.seek`, the new method was not
+  being used by :meth:`~eth_abi_lite.decoding.ContextFramesBytesIO.seek_in_frame`. Now it will be. (`#139 <https://github.com/ethereum/eth-abi/issues/139>`__)
 
 
-Internal Changes - for eth_abi contributors
+Internal Changes - for eth_abi_lite contributors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Merged in project template, for changes in release scripts, docs, release notes, etc. (`#140 <https://github.com/ethereum/eth-abi/issues/140>`__)
@@ -54,7 +54,7 @@ v2.1.0
 ------
 
 - Added support for "byte" alias for "bytes1" type.
-- Added support for custom stream class in :class:`~eth_abi.codec.ABIDecoder`.
+- Added support for custom stream class in :class:`~eth_abi_lite.codec.ABIDecoder`.
   See :ref:`custom_stream_class`.
 
 v2.0.0
@@ -65,14 +65,14 @@ v2.0.0
 v2.0.0-beta.9
 -------------
 
-- Added ``eth_abi.tools`` submodule with extra requirements installable with
+- Added ``eth_abi_lite.tools`` submodule with extra requirements installable with
   ``pip install eth-abi[tools]``.  See :ref:`tools`.
 
 v2.0.0-beta.8
 -------------
 
-- Added  :meth:`~eth_abi.registry.ABIRegistry.has_encoder` and
-  :meth:`~eth_abi.codec.ABIEncoder.is_encodable_type` to facilitate checking
+- Added  :meth:`~eth_abi_lite.registry.ABIRegistry.has_encoder` and
+  :meth:`~eth_abi_lite.codec.ABIEncoder.is_encodable_type` to facilitate checking
   for type validity against coder registrations.
 
 v2.0.0-beta.7
@@ -89,11 +89,11 @@ v2.0.0-beta.6
 -------------
 
 - Added the grammar module to the public API.  See :ref:`grammar`.
-- Updated string API for the :class:`~eth_abi.grammar.ABIType`.  Type strings
-  for :class:`~eth_abi.grammar.ABIType` instances are now obtained via the
-  :meth:`~eth_abi.grammar.ABIType.to_type_str` method instead of by invoking
+- Updated string API for the :class:`~eth_abi_lite.grammar.ABIType`.  Type strings
+  for :class:`~eth_abi_lite.grammar.ABIType` instances are now obtained via the
+  :meth:`~eth_abi_lite.grammar.ABIType.to_type_str` method instead of by invoking
   the builtin Python ``str`` function with an instance of
-  :class:`~eth_abi.grammar.ABIType`.
+  :class:`~eth_abi_lite.grammar.ABIType`.
 
 v2.0.0-beta.5
 -------------
@@ -130,14 +130,14 @@ v2.0.0-beta.1
   - Added support for tuple array types e.g. ``(int,int)[]``
 - Backwards Incompatible Changes
 
-  - The :meth:`~eth_abi.abi.encode_single` and
-    :meth:`~eth_abi.abi.decode_single` functions no longer accept type tuples
+  - The :meth:`~eth_abi_lite.abi.encode_single` and
+    :meth:`~eth_abi_lite.abi.decode_single` functions no longer accept type tuples
     to identify ABI types.  Only type strings are accepted.
-  - The :meth:`~eth_abi.utils.parsing.collapse_type` function has been removed.
+  - The :meth:`~eth_abi_lite.utils.parsing.collapse_type` function has been removed.
     People who still wish to use this function should replicate its logic
     locally and where needed.
-  - The :meth:`~eth_abi.utils.parsing.process_type` function has been removed
-    in favor of the :meth:`~eth_abi.grammar.parse` function.  This should make
+  - The :meth:`~eth_abi_lite.utils.parsing.process_type` function has been removed
+    in favor of the :meth:`~eth_abi_lite.grammar.parse` function.  This should make
     the parsing API more consistent with the new parsimonious parser.
 
 v2.0.0-alpha.1
@@ -147,7 +147,7 @@ Released July 19, 2018
 
 - Backwards Incompatible Changes
 
-  - :meth:`~eth_abi.abi.decode_single` called with ABI type 'string' will now return a python
+  - :meth:`~eth_abi_lite.abi.decode_single` called with ABI type 'string' will now return a python
     :class:`str` instead of :class:`bytes`.
   - Support for the legacy ``real`` and ``ureal`` types has been removed
 - Bugfixes
@@ -205,10 +205,10 @@ Released May 10, 2018
 
 - Bugfixes
 
-  - :meth:`~eth_abi.abi.is_encodable()` now returns ``False`` if a :class:`~decimal.Decimal` has
+  - :meth:`~eth_abi_lite.abi.is_encodable()` now returns ``False`` if a :class:`~decimal.Decimal` has
     too many digits to be encoded in the given ``fixed<M>x<N>`` type.
     (It was previously raising a :class:`ValueError`)
-  - Raise an :class:`~eth_abi.exceptions.EncodingTypeError` instead of a
+  - Raise an :class:`~eth_abi_lite.exceptions.EncodingTypeError` instead of a
     :class:`TypeError` when trying to encode a :class:`float` into a ``fixed<M>x<N>`` type.
 
 v1.1.0

@@ -459,7 +459,7 @@ class ABIRegistry(Copyable, BaseRegistry):
         """
         Returns ``True`` if an encoder is found for the given type string
         ``type_str``.  Otherwise, returns ``False``.  Raises
-        :class:`~eth_abi.exceptions.MultipleEntriesFound` if multiple encoders
+        :class:`~eth_abi_lite.exceptions.MultipleEntriesFound` if multiple encoders
         are found.
         """
         try:

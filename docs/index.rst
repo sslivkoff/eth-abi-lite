@@ -28,7 +28,7 @@ Table of Contents
     nested_dynamic_arrays
     grammar
     tools
-    eth_abi
+    eth_abi_lite
     release_notes
 
 

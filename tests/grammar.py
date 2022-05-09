@@ -5,11 +5,11 @@ from hypothesis import (
 )
 import pytest
 
-from eth_abi.exceptions import (
+from eth_abi_lite.exceptions import (
     ABITypeError,
     ParseError,
 )
-from eth_abi.grammar import (
+from eth_abi_lite.grammar import (
     TYPE_ALIASES,
     BasicType,
     TupleType,

@@ -11,17 +11,17 @@ from eth_utils import (
     to_tuple,
 )
 
-from eth_abi.base import (
+from eth_abi_lite.base import (
     BaseCoder,
     parse_tuple_type_str,
     parse_type_str,
 )
-from eth_abi.exceptions import (
+from eth_abi_lite.exceptions import (
     DecodingError,
     InsufficientDataBytes,
     NonEmptyPaddingBytes,
 )
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     TEN,
     abi_decimal_context,
     ceil32,

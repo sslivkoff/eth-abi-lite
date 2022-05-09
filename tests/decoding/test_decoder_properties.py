@@ -17,10 +17,10 @@ from hypothesis import (
 )
 import pytest
 
-from eth_abi.constants import (
+from eth_abi_lite.constants import (
     TT256M1,
 )
-from eth_abi.decoding import (
+from eth_abi_lite.decoding import (
     AddressDecoder,
     BooleanDecoder,
     BytesDecoder,
@@ -34,18 +34,18 @@ from eth_abi.decoding import (
     UnsignedFixedDecoder,
     UnsignedIntegerDecoder,
 )
-from eth_abi.exceptions import (
+from eth_abi_lite.exceptions import (
     DecodingError,
     InsufficientDataBytes,
     NonEmptyPaddingBytes,
 )
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     registry,
 )
-from eth_abi.utils.numeric import (
+from eth_abi_lite.utils.numeric import (
     ceil32,
 )
-from eth_abi.utils.padding import (
+from eth_abi_lite.utils.padding import (
     zpad32,
 )
 

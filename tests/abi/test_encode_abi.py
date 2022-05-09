@@ -1,9 +1,9 @@
 import pytest
 
-from eth_abi import (
+from eth_abi_lite import (
     encode_abi,
 )
-from eth_abi.grammar import (
+from eth_abi_lite.grammar import (
     parse,
 )
 

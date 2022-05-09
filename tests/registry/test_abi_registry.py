@@ -3,12 +3,12 @@ import itertools
 
 import pytest
 
-from eth_abi import (
+from eth_abi_lite import (
     decoding,
     encoding,
     exceptions,
 )
-from eth_abi.registry import (
+from eth_abi_lite.registry import (
     ABIRegistry,
     BaseEquals,
     has_arrlist,

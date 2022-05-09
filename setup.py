@@ -52,10 +52,10 @@ with open('./README.md') as readme:
 
 
 setup(
-    name='eth_abi',
+    name='eth_abi_lite',
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
     version='3.0.0',
-    description="""eth_abi: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding""",
+    description="""eth_abi_lite: Python utilities for working with Ethereum ABI definitions, especially encoding and decoding""",
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='The Ethereum Foundation',
@@ -69,12 +69,12 @@ setup(
     ],
     python_requires='>=3.7, <4',
     extras_require=extras_require,
-    py_modules=['eth_abi'],
+    py_modules=['eth_abi_lite'],
     license="MIT",
     zip_safe=False,
     keywords='ethereum',
     packages=find_packages(exclude=["tests", "tests.*"]),
-    package_data={'eth_abi': ['py.typed']},
+    package_data={'eth_abi_lite': ['py.typed']},
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
