@@ -73,7 +73,14 @@ setup(
     license="MIT",
     zip_safe=False,
     keywords='ethereum',
-    packages=find_packages(exclude=["tests", "tests.*"]),
+    package_dir={"": 'src'},
+    packages=[
+        'eth_abi_lite',
+        'eth_abi_lite.tools',
+        'eth_abi_lite.utils',
+        # 'eth_utils_lite',
+        # 'eth_typing_lite',
+    ],
     package_data={'eth_abi_lite': ['py.typed']},
     classifiers=[
         'Development Status :: 5 - Production/Stable',
