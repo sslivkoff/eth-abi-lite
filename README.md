@@ -1,9 +1,9 @@
 
-# eth-abi-lite
+# `eth_abi_lite`
 
-This is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`.
+`eth_abi_lite` is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`.
 
-`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`.
+`eth_abi_lite` can be used as a drop-in replacement for `eth_abi==3.0.0`.
 
 #### Motivation
 1) Many packages in the ethereum ecosystem have conflicting requirements for versions of these dependencies. Pruning these dependencies results in an abi encoding/decoding package that can be included in more environments than `eth_abi`.
@@ -11,7 +11,7 @@ This is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functi
 
 #### Does `eth_abi_lite` work the same as `eth_abi`?
 
-`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`. The one difference is that `eth_abi`'s low level pad functions are no longer curry-able. In most cases this change will not be noticed.
+`eth_abi_lite` can be used as a drop-in replacement for `eth_abi==3.0.0`. The one functional difference is that `eth_abi`'s low level pad functions are no longer curry-able. In most cases this difference will not be noticed.
 
 `eth_abi_lite` passes `eth_abi`'s standard test suite when running `tox`:
 
@@ -32,7 +32,7 @@ ____________________________________ summary ___________________________________
 #### Is `eth_abi_lite` faster?
 
 According to testing with [tuna](https://github.com/nschloe/tuna) on a good laptop:
-- `eth_abi_lite` takes about **45 ms** to import
+- `eth_abi_lite` takes about **18 ms** to import
 - `eth_abi` takes about **180 ms** to import
 
 `eth_abi_lite` is faster to import because it loads fewer dependencies. This is useful in the context of cli tools where startup times matter.
