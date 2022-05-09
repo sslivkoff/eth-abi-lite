@@ -59,9 +59,7 @@ setup(
     description="""eth_abi_lite is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`""",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    author='The Ethereum Foundation',
-    author_email='snakecharmers@ethereum.org',
-    url='https://github.com/ethereum/eth-abi',
+    url='https://github.com/sslivkoff/eth-abi-lite',
     include_package_data=True,
     install_requires=[
         'parsimonious>=0.8.0,<0.9.0',
