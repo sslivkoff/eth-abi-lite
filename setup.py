@@ -17,6 +17,7 @@ extras_require = {
         "pytest-xdist>=2.5.0,<3",
         "tox>=2.9.1,<3",
         "eth-hash[pycryptodome]",
+        "toolz",
         HYPOTHESIS_REQUIREMENT,
     ],
     'lint': [
