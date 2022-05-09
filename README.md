@@ -1,96 +1,116 @@
-# Ethereum Contract Interface (ABI) Utility
 
-[![Join the chat at https://gitter.im/ethereum/eth-abi](https://badges.gitter.im/ethereum/eth-abi.svg)](https://gitter.im/ethereum/eth-abi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://circleci.com/gh/ethereum/eth-abi.svg?style=shield)](https://circleci.com/gh/ethereum/eth-abi)
-[![PyPI version](https://badge.fury.io/py/eth-abi.svg)](https://badge.fury.io/py/eth-abi)
-[![Python versions](https://img.shields.io/pypi/pyversions/eth-abi.svg)](https://pypi.python.org/pypi/eth-abi)
-[![Docs build](https://readthedocs.org/projects/eth-abi/badge/?version=latest)](http://eth-abi.readthedocs.io/en/latest/?badge=latest)
-   
+# eth-abi-lite
 
-Python utilities for working with Ethereum ABI definitions, especially encoding and decoding
+This is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`.
 
-Read more in the [documentation on ReadTheDocs](https://eth-abi.readthedocs.io/). [View the change log](https://eth-abi.readthedocs.io/en/latest/releases.html).
+`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`.
 
-## Quickstart
+#### Motivation
+1) Many packages in the ethereum ecosystem have conflicting requirements for versions of these dependencies. Pruning these dependencies results in an abi encoding/decoding package that can be included in more environments than `eth_abi`.
+2) These dependencies are rather heavy if all you want is basic abi encoding/decoding functionality.
 
-```sh
-pip install eth_abi
+## Survey of imported items
+
+`eth_abi_lite` imports the following items from its dependencies:
+
+#### Items Imported From `eth_utils`
+- `big_endian_to_int`
+- `compose_if_tuple`
+- `int_to_big_endian`
+- `is_address`
+- `is_boolean`
+- `is_bytes`
+- `is_integer`
+- `is_list_like`
+- `is_number`
+- `is_text`
+- `to_canonical_address`
+- `to_checksum_address`
+- `to_normalized_address`
+- `to_tuple`
+
+#### Items Imported From `eth_typing`
+- `TypeStr`
+- `Decodable`
+
+#### Items Imported From `eth_utils.toolz`
+- `toolz.functoolz.curry`
+
+
+## The Changes
+The changes from `eth_abi` to `eth_abi_lite` consist mostly of copying portions of `eth_utils` and `eth_typing`.
+
+The basic idea is that every time something is imported from `eth_utils` or `eth_typing`, that thing is instead imported from a lite version of that package.
+
+
+#### Step 1. Create `eth_utils_lite`
+
+Copy these items from `eth_utils` to `eth_utils_lite`
+- `eth_utils/abi.py`
+- `eth_utils/address.py`
+- `eth_utils/conversions.py`
+- `eth_utils/crypto.py`
+- `eth_utils/decorators.py`
+- `eth_utils/encoding.py`
+- `eth_utils/functional.py`
+- `eth_utils/hexadecimal.py`
+- `eth_utils/types.py`
+
+The only non-mutual dependency in these modules is `eth_hash.keccak()` in `eth_utils/crypto.py`. Replace this function with `pycryptodome`'s keccak implementation directly.
+
+Also in `eth_utils/functional.py`, remove the functions that are decorated by `toolz.compose`.
+
+It is possible to prune these files more aggressively, but leaving the files unchanged minimizes the chances of introducing bugs.
+
+#### Step 2. Create `eth_typing_lite`
+
+Copy these items from `eth_typing` to `eth_typing_lite`:
+- `Address`
+- `AnyAddress`
+- `ChecksumAddress`
+- `Decodable`
+- `HexAddress`
+- `HexStr`
+- `Primitives`
+- `TypeStr`
+
+These are all of the `eth_typing` types used by `eth_abi_lite` and `eth_utils_lite`.
+
+
+#### Step 3. Create `eth_abi_lite`
+
+1. Copy all files from `eth_abi` into `eth_abi_lite`
+2. Replace all instances of
+    - `eth_utils` with `eth_utils`
+    - `eth_typing` with `eth_typing_lite`
+    - `eth_abi` with `eth_abi_lite`
+3. Replace the `toolz.curry` decoration on `eth_abi.zpad` and `eth_abi.fpad` with `functions.partial` decoration.
+
+
+## Results
+
+#### Does `eth_abi_lite` work the same as `eth_abi`?
+
+`eth_abi`'s standard test suite passes when running `tox`:
+
+```
+...
+======================== 751 passed, 3 skipped in 18.45s ========================
+____________________________________ summary ____________________________________
+  py37-core: commands succeeded                                                  
+  py38-core: commands succeeded                                                  
+  py39-core: commands succeeded                                                  
+  py310-core: commands succeeded                                                 
+  congratulations :)                                                             
 ```
 
-## Developer Setup
+`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`. The one difference is that `eth_abi`'s low level pad functions are no longer curry-able. In most cases this change will not be noticed.
 
-If you would like to hack on eth-abi, please check out the [Snake Charmers
-Tactical Manual](https://github.com/ethereum/snake-charmers-tactical-manual)
-for information on how we do:
 
-- Testing
-- Pull Requests
-- Code Style
-- Documentation
+#### Is eth-abi-lite faster?
 
-### Development Environment Setup
+According to testing with [tuna](https://github.com/nschloe/tuna) on a good laptop:
+- `eth_abi_lite` takes about **45 ms** to import
+- `eth_abi` takes about **180 ms** to import
 
-You can set up your dev environment with:
-
-```sh
-git clone git@github.com:ethereum/eth-abi.git
-cd eth-abi
-virtualenv -p python3 venv
-. venv/bin/activate
-pip install -e .[dev]
-```
-
-### Testing Setup
-
-During development, you might like to have tests run on every file save.
-
-Show flake8 errors on file change:
-
-```sh
-# Test flake8
-when-changed -v -s -r -1 eth_abi/ tests/ -c "clear; flake8 eth_abi tests && echo 'flake8 success' || echo 'error'"
-```
-
-Run multi-process tests in one command, but without color:
-
-```sh
-# in the project root:
-pytest --numprocesses=4 --looponfail --maxfail=1
-# the same thing, succinctly:
-pytest -n 4 -f --maxfail=1
-```
-
-Run in one thread, with color and desktop notifications:
-
-```sh
-cd venv
-ptw --onfail "notify-send -t 5000 'Test failure ⚠⚠⚠⚠⚠' 'python 3 test on eth-abi failed'" ../tests ../eth_abi
-```
-
-### Release setup
-
-For Debian-like systems:
-```
-apt install pandoc
-```
-
-To release a new version:
-
-```sh
-make release bump=$$VERSION_PART_TO_BUMP$$
-```
-
-#### How to bumpversion
-
-The version format for this repo is `{major}.{minor}.{patch}` for stable, and
-`{major}.{minor}.{patch}-{stage}.{devnum}` for unstable (`stage` can be alpha or beta).
-
-To issue the next version in line, specify which part to bump,
-like `make release bump=minor` or `make release bump=devnum`. This is typically done from the
-master branch, except when releasing a beta (in which case the beta is released from master,
-and the previous stable branch is released from said branch).
-
-If you are in a beta version, `make release bump=stage` will switch to a stable.
-
-To issue an unstable version when the current version is stable, specify the
-new version explicitly, like `make release bump="--new-version 4.0.0-alpha.1 devnum"`
+`eth_abi_lite` is faster to import because it loads fewer dependencies. This makes `eth_abi_lite` useful in the context of `cli` tools where startup times matter.

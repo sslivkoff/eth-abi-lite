@@ -8,4 +8,4 @@ from eth_abi_lite.abi import (  # NOQA
     is_encodable_type,
 )
 
-__version__ = '0.3.0'
+__version__ = '3.0.1'
