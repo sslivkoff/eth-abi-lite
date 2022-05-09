@@ -8,8 +8,8 @@ from typing import (
     Union,
 )
 
-from eth_typing import (
-    abi,
+from eth_typing_lite import (
+    TypeStr,
 )
 
 from . import (
@@ -27,7 +27,7 @@ from .exceptions import (
     NoEntriesFound,
 )
 
-Lookup = Union[abi.TypeStr, Callable[[abi.TypeStr], bool]]
+Lookup = Union[TypeStr, Callable[[TypeStr], bool]]
 
 EncoderCallable = Callable[[Any], bytes]
 DecoderCallable = Callable[[decoding.ContextFramesBytesIO], Any]
@@ -455,7 +455,7 @@ class ABIRegistry(Copyable, BaseRegistry):
     def get_encoder(self, type_str):
         return self._get_registration(self._encoders, type_str)
 
-    def has_encoder(self, type_str: abi.TypeStr) -> bool:
+    def has_encoder(self, type_str: TypeStr) -> bool:
         """
         Returns ``True`` if an encoder is found for the given type string
         ``type_str``.  Otherwise, returns ``False``.  Raises

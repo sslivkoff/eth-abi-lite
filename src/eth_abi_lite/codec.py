@@ -4,7 +4,7 @@ from typing import (
     Tuple,
 )
 
-from eth_typing.abi import (
+from eth_typing_lite import (
     Decodable,
     TypeStr,
 )

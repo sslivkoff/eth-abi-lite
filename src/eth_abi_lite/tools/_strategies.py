@@ -3,7 +3,7 @@ from typing import (
     Union,
 )
 
-from eth_typing.abi import (
+from eth_typing_lite import (
     TypeStr,
 )
 from eth_utils import (

@@ -64,7 +64,6 @@ setup(
     include_package_data=True,
     install_requires=[
         'eth-utils>=2.0.0,<3.0.0',
-        'eth-typing>=3.0.0,<4.0.0',
         'parsimonious>=0.8.0,<0.9.0',
     ],
     python_requires='>=3.7, <4',
@@ -79,7 +78,7 @@ setup(
         'eth_abi_lite.tools',
         'eth_abi_lite.utils',
         # 'eth_utils_lite',
-        # 'eth_typing_lite',
+        'eth_typing_lite',
     ],
     package_data={'eth_abi_lite': ['py.typed']},
     classifiers=[
