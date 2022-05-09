@@ -55,7 +55,7 @@ with open('./README.md') as readme:
 setup(
     name='eth_abi_lite',
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version='3.0.1',
+    version='3.0.2',
     description="""eth_abi_lite is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`""",
     long_description=long_description,
     long_description_content_type='text/markdown',
