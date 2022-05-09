@@ -10,7 +10,7 @@ from typing import (
     Type,
 )
 
-from eth_utils import (
+from eth_utils_lite import (
     int_to_big_endian,
     is_address,
     is_boolean,

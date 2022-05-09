@@ -1,12 +1,12 @@
 import sys
 
-from eth_utils import (
+from eth_utils_lite import (
     big_endian_to_int,
     decode_hex,
     int_to_big_endian,
     to_normalized_address,
 )
-from eth_utils.toolz import (
+from toolz import (
     complement,
 )
 from hypothesis import (

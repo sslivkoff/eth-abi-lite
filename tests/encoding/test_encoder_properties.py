@@ -1,7 +1,7 @@
 import codecs
 import decimal
 
-from eth_utils import (
+from eth_utils_lite import (
     decode_hex,
     int_to_big_endian,
     is_address,

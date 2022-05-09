@@ -6,7 +6,7 @@ from typing import (
 from eth_typing_lite import (
     TypeStr,
 )
-from eth_utils import (
+from eth_utils_lite import (
     to_checksum_address,
 )
 from hypothesis import (

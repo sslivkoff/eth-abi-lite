@@ -5,7 +5,7 @@ from typing import (
     Any,
 )
 
-from eth_utils import (
+from eth_utils_lite import (
     big_endian_to_int,
     to_normalized_address,
     to_tuple,

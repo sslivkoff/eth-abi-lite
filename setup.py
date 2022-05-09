@@ -77,7 +77,7 @@ setup(
         'eth_abi_lite',
         'eth_abi_lite.tools',
         'eth_abi_lite.utils',
-        # 'eth_utils_lite',
+        'eth_utils_lite',
         'eth_typing_lite',
     ],
     package_data={'eth_abi_lite': ['py.typed']},

@@ -8,7 +8,7 @@ from eth_typing_lite import (
     Decodable,
     TypeStr,
 )
-from eth_utils import (
+from eth_utils_lite import (
     is_bytes,
 )
 
