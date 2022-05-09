@@ -9,6 +9,35 @@ This is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functi
 1) Many packages in the ethereum ecosystem have conflicting requirements for versions of these dependencies. Pruning these dependencies results in an abi encoding/decoding package that can be included in more environments than `eth_abi`.
 2) These dependencies are rather heavy if all you want is basic abi encoding/decoding functionality.
 
+#### Does `eth_abi_lite` work the same as `eth_abi`?
+
+`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`. The one difference is that `eth_abi`'s low level pad functions are no longer curry-able. In most cases this change will not be noticed.
+
+`eth_abi_lite` passes `eth_abi`'s standard test suite when running `tox`:
+
+```
+...
+======================== 751 passed, 3 skipped in 18.45s ========================
+____________________________________ summary ____________________________________
+  py37-core: commands succeeded                                                  
+  py38-core: commands succeeded                                                  
+  py39-core: commands succeeded                                                  
+  py310-core: commands succeeded                                                 
+  congratulations :)                                                             
+```
+
+(tests for linting and docs removed)
+
+
+#### Is `eth_abi_lite` faster?
+
+According to testing with [tuna](https://github.com/nschloe/tuna) on a good laptop:
+- `eth_abi_lite` takes about **45 ms** to import
+- `eth_abi` takes about **180 ms** to import
+
+`eth_abi_lite` is faster to import because it loads fewer dependencies. This is useful in the context of cli tools where startup times matter.
+
+
 ## Survey of imported items
 
 `eth_abi_lite` imports the following items from its dependencies:
@@ -85,32 +114,3 @@ These are all of the `eth_typing` types used by `eth_abi_lite` and `eth_utils_li
     - `eth_typing` with `eth_typing_lite`
     - `eth_abi` with `eth_abi_lite`
 3. Replace the `toolz.curry` decoration on `eth_abi.zpad` and `eth_abi.fpad` with `functions.partial` decoration.
-
-
-## Results
-
-#### Does `eth_abi_lite` work the same as `eth_abi`?
-
-`eth_abi`'s standard test suite passes when running `tox`:
-
-```
-...
-======================== 751 passed, 3 skipped in 18.45s ========================
-____________________________________ summary ____________________________________
-  py37-core: commands succeeded                                                  
-  py38-core: commands succeeded                                                  
-  py39-core: commands succeeded                                                  
-  py310-core: commands succeeded                                                 
-  congratulations :)                                                             
-```
-
-`eth_abi_lite` can be used as a drop-in replacement for `eth_abi`. The one difference is that `eth_abi`'s low level pad functions are no longer curry-able. In most cases this change will not be noticed.
-
-
-#### Is eth-abi-lite faster?
-
-According to testing with [tuna](https://github.com/nschloe/tuna) on a good laptop:
-- `eth_abi_lite` takes about **45 ms** to import
-- `eth_abi` takes about **180 ms** to import
-
-`eth_abi_lite` is faster to import because it loads fewer dependencies. This makes `eth_abi_lite` useful in the context of `cli` tools where startup times matter.
