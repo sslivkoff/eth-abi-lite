@@ -5,8 +5,10 @@
 
 `eth_abi_lite` can be used as a drop-in replacement for `eth_abi==3.0.0`.
 
+Install with `pip install eth_abi_lite`
+
 #### Motivation
-1) Many packages in the ethereum ecosystem have conflicting requirements for versions of these dependencies. Pruning these dependencies results in an abi encoding/decoding package that can be included in more environments than `eth_abi`.
+1) Many packages in the ethereum ecosystem have conflicting version requirements for dependencies such as `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`. Removing these dependencies allows a package to be used in more environments.
 2) These dependencies are rather heavy if all you want is basic abi encoding/decoding functionality.
 
 #### Does `eth_abi_lite` work the same as `eth_abi`?
@@ -113,4 +115,4 @@ These are all of the `eth_typing` types used by `eth_abi_lite` and `eth_utils_li
     - `eth_utils` with `eth_utils`
     - `eth_typing` with `eth_typing_lite`
     - `eth_abi` with `eth_abi_lite`
-3. Replace the `toolz.curry` decoration on `eth_abi.zpad` and `eth_abi.fpad` with `functions.partial` decoration.
+3. Replace the `toolz.curry` decoration on `eth_abi.zpad` and `eth_abi.fpad` with `functools.partial` decoration.
