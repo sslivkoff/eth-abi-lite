@@ -54,7 +54,7 @@ with open('./README.md') as readme:
 
 setup(
     name='eth_abi_lite',
-    version='3.0.3',
+    version='3.1.0',
     description="""eth_abi_lite is a lite fork of `eth_abi`, aiming to support EVM abi encode/decode functionality without external dependencies on `eth_utils`, `eth_typing`, `toolz`, or `cytoolz`""",
     long_description=long_description,
     long_description_content_type='text/markdown',
