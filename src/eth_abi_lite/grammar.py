@@ -1,8 +1,8 @@
 import functools
 import re
 
-import parsimonious
-from parsimonious import (
+import parsimonious_lite as parsimonious
+from parsimonious_lite import (
     expressions,
 )
 

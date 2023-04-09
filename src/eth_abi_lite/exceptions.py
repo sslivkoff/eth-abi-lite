@@ -1,4 +1,4 @@
-import parsimonious
+import parsimonious_lite as parsimonious
 
 
 class EncodingError(Exception):

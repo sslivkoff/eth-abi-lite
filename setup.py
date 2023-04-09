@@ -61,7 +61,7 @@ setup(
     url='https://github.com/sslivkoff/eth-abi-lite',
     include_package_data=True,
     install_requires=[
-        'parsimonious>=0.8.0,<0.9.0',
+        'parsimonious-lite>=0.11.0,<0.12.0',
     ],
     python_requires='>=3.7, <4',
     extras_require=extras_require,
