@@ -60,9 +60,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/sslivkoff/eth-abi-lite',
     include_package_data=True,
-    install_requires=[
-        'parsimonious-lite>=0.11.0,<0.12.0',
-    ],
+    install_requires=[],
     python_requires='>=3.7, <4',
     extras_require=extras_require,
     py_modules=['eth_abi_lite'],
@@ -76,6 +74,8 @@ setup(
         'eth_abi_lite.utils',
         'eth_utils_lite',
         'eth_typing_lite',
+        'parsimonious_lite',
+        'six_lite',
     ],
     package_data={'eth_abi_lite': ['py.typed']},
     classifiers=[
